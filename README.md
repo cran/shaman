@@ -1,0 +1,59 @@
+
+# The shaman package - sampling HiC contact matrices for a-parametric normalization
+
+Shaman package implements functions for resampling Hi-C matrices in order to generate expected contact distributions given constraints on marginal coverage and contact-distance probability distributions. The package also provides support for visualizing normalized matrices and statistical analysis of contact distributions around selected landmarks. It is an R package embedding algorithms implemented in C++, which is built over the Tanay lab's *misha* genomic database system (the misha package).
+
+The normalization workflow consists of the following steps:
+
+1.  [Import](https://tanaylab.github.io/shaman/articles/import.html) observed HiC data to misha db. In order to utilize full functionality of the shaman package, you need to construct a Misha database for your genome of interest, and import your Hi-C data to Misha binary Quad-tree format.
+2.  Shuffle observed data to generate expected data. Note that shaman can also run distributed using Sun Grid Engine.
+3.  Compute the normalized score of each observed data point. This computation can be conducted inline for a specific genomic region, or pre-processed on the entire dataset using distributed computation.
+4.  Visualize normalized contact maps. Precomputed normalized scores allow for flexible analysis of contact distributions.
+5.  Quantify contact enrichment according to genomic features.
+
+The package includes a small example misha database (`shaman_get_test_track_db()`) with the observed, expected and score tracks of chr2:176.5e06-177e06, around the hoxd locus, from the ELA K562 dataset. The full example database (`shaman_get_test_track_db(full = TRUE)`, downloaded from the lab's public S3 bucket on first use, about 100MB) is a low-footprint matrix to exemplify the shaman workflow: 4.6 million contacts from the ELA K562 dataset covering the hoxd locus (chr2:175e06-178e06) and convergent CTCF regions. Processing the complete matrix from this study requires downloading the full contact list and regenerating the reshuffled matrix.
+
+### Code
+
+Source code can be found at: <https://github.com/tanaylab/shaman>
+
+### Requirements
+
+- *System:* multi-core unix / linux based system or SGE (sun grid engine) cluster for distributed computing are required for large HiC datasets.
+
+### Installation
+
+You can install the released version of shaman from CRAN with:
+
+``` r
+install.packages("shaman")
+```
+
+And the development version from GitHub with:
+
+``` r
+remotes::install_github("tanaylab/shaman")
+```
+
+Both install [misha](https://github.com/tanaylab/misha) automatically.
+
+`shaman_plot_tracks_and_annotations()` and `shaman_plot_map_score_with_annotations()` also need the Bioconductor package [Gviz](https://bioconductor.org/packages/Gviz/), which is not installed by default:
+
+``` r
+if (!requireNamespace("BiocManager", quietly = TRUE))
+    install.packages("BiocManager")
+BiocManager::install("Gviz")
+```
+
+### Using the package
+
+Please refer to <https://tanaylab.github.io/shaman/articles/shaman-package.html> for usage and workflow.
+
+
+### Citation
+
+If you use shaman, please cite:
+
+Mendelson Cohen N, Olivares-Chauvet P, Lubling Y, Baran Y, Lifshitz A, Hoichman M, Tanay A (2017). SHAMAN: bin-free randomization, normalization and screening of Hi-C matrices. *bioRxiv*. [doi:10.1101/187203](https://doi.org/10.1101/187203)
+
+`citation("shaman")` gives the same reference, including a BibTeX entry.

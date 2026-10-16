@@ -1,0 +1,95 @@
+---
+title: "Import"
+author: "Netta Mendelson Cohen"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Import}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+## Create misha database from ucsc
+
+### hg19
+In order to create a misha database for _hg19_ genome, run the following _misha_ commands (assuming *"hg19"* is your new data base path):
+```{r, eval = FALSE}
+url <- "https://hgdownload.soe.ucsc.edu/goldenPath/hg19/"
+gdb.create("hg19",
+           paste0(url, 'chromosomes/chr', c(1:22, 'X', 'Y', 'M'), '.fa.gz'),
+           paste0(url, "database/knownGene.txt.gz"),
+           paste0(url, "database/kgXref.txt.gz"),
+           c("kgID", "mRNA", "spID", "spDisplayID", "geneSymbol",
+             "refseq", "protAcc", "description", "rfamAcc",
+             "tRnaName"))
+gdb.init('hg19')
+
+```
+
+### hg38
+In order to create a misha database for _hg38_ genome, run the following _misha_ commands (assuming *"hg38"* is your new data base path):
+```{r, eval = FALSE}
+url <- "https://hgdownload.soe.ucsc.edu/goldenPath/hg38/"
+gdb.create("hg38",
+           paste0(url, 'chromosomes/chr', c(1:22, 'X', 'Y', 'M'), '.fa.gz'),
+           paste0(url, "database/knownGene.txt.gz"),
+           paste0(url, "database/kgXref.txt.gz"),
+           c("kgID", "mRNA", "spID", "spDisplayID", "geneSymbol",
+             "refseq", "protAcc", "description", "rfamAcc",
+             "tRnaName"))
+gdb.init('hg38')
+
+```
+
+### mm9
+In order to create a misha database for _mm9_ genome, run the following _misha_ commands (assuming *"mm9"* is your new data base path):
+```{r, eval = FALSE}
+url <- "https://hgdownload.soe.ucsc.edu/goldenPath/mm9/"
+gdb.create("mm9",
+           paste0(url, 'chromosomes/chr', c(1:19, 'X', 'Y', 'M'), '.fa.gz'),
+           paste0(url, "database/knownGene.txt.gz"),
+           paste0(url, "database/kgXref.txt.gz"),
+           c("kgID", "mRNA", "spID", "spDisplayID", "geneSymbol",
+             "refseq", "protAcc", "description"))
+gdb.init('mm9')
+
+```
+
+### mm10
+In order to create a misha database for _mm10_ genome, run the following _misha_ commands (assuming *"mm10"* is your new data base path):
+```{r, eval = FALSE}
+url <- "https://hgdownload.soe.ucsc.edu/goldenPath/mm10/"
+gdb.create("mm10",
+           paste0(url, 'chromosomes/chr', c(1:19, 'X', 'Y', 'M'), '.fa.gz'),
+           paste0(url, "database/knownGene.txt.gz"),
+           paste0(url, "database/kgXref.txt.gz"),
+           c("kgID", "mRNA", "spID", "spDisplayID", "geneSymbol",
+             "refseq", "protAcc", "description", "rfamAcc",
+             "tRnaName"))
+gdb.init('mm10')
+
+```
+
+
+## Import HiC observed contacts
+In order to import observed HiC contacts to an existing misha database (e.g. "hg19"):
+
+1. create tab delimited text files (e.g. "hic.obs.txt") with the following columns:
+- chrom1 - the first chromosome of the contact (must start with "chr")
+- start1 - the first genomic coordinate
+- end1 - should be set to start1+1
+- chrom2 - the second chromosome of the  contact (must start with "chr")
+- start2 - the second genomic coordinate of the contact
+- end2 - should be set to start2+1
+- contacts - contains the number of reads found for this contact
+IMPORTANT NOTES: 
+misha uses 0-based coordinates!
+File must contain a header line with the following columns: chrom1, start1, end1, chrom2, start2, end2, contacts in this order.
+Coordinates must be unique - cannot have the same contact more than once.
+  
+2. run the following _misha_ command:
+```{r, eval = FALSE}
+gsetroot("hg19")
+gtrack.2d.import(track="hic_obs", description="observed hic data", file=c("hic.obs.txt"))
+gdb.reload()
+```
