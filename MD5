@@ -1,6 +1,6 @@
-86d9408b57680e485eb193e9bfb70390 *DESCRIPTION
+ea17246b40c5d1439af837f735d28046 *DESCRIPTION
 0d7e1cbd28fee87bcdcee520234aa92a *NAMESPACE
-ed5e8a052a8f57bd0abd34bfa391f755 *NEWS.md
+a657f6fe43529d0fd217895e410b9c3a *NEWS.md
 20ad5330d0367cae07f339f935460e95 *R/RcppExports.R
 9c50e64bd810370281b10769c5179141 *R/data.R
 171d6ed6d403877e05c468cf04f1b8f0 *R/params.R
@@ -19,7 +19,7 @@ b78c89938c7eacd036ed945f668035dc *data/ctcf_reverse.rda
 5d6be5697387ff2d5ad020c8dbc9d152 *inst/config/shaman.conf
 d761d6bbec8c7874b9939c92532f9595 *inst/doc/import.R
 68a645ed1262254c9f1ae2d6ad381dc9 *inst/doc/import.Rmd
-3a42279adf65d20542e75593fd656e1d *inst/doc/import.html
+76aeceeae1471040501ba1bcf2184d91 *inst/doc/import.html
 1817f400ad63d0e97c2361495743af1d *inst/doc/shaman-package.Rmd
 9f2bcfb9d7588adfae2618838a78b38a *inst/doc/shaman-package.html
 b3c497216c61fb01a6a7e13519edd1e2 *inst/extdata/hoxd.tsv.xz
@@ -48,7 +48,7 @@ fb53d1e1173e013851ba16f434acdd9d *man/shaman_score_hic_track.Rd
 07b2f79dcba81ed7a47feb4151bf0a01 *man/shaman_shuffle_and_score_hic_mat.Rd
 dcb23b51181b3f941aea2a2cd66339e9 *man/shaman_shuffle_hic_mat_for_track.Rd
 b32b083269997d75ce605c5077fad7b7 *man/shaman_shuffle_hic_track.Rd
-7ddafb8552fd796d683dface73bd194f *src/ContactShuffler.cpp
+a8a2fcd0f47e0fc0b66223039e57e5ea *src/ContactShuffler.cpp
 8dc6c02bbdd239e937d68bd3dd1d6ffd *src/ContactShuffler.h
 ca3599ae97e348b581288765711ba026 *src/GenomeGridLog.cpp
 970cab8bf03648eedad21f51a4accddf *src/GenomeGridLog.h

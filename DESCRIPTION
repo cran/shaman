@@ -1,7 +1,7 @@
 Package: shaman
 Type: Package
 Title: Sampling Hi-C Contact Matrices for Aparametric Normalization
-Version: 2.1.0
+Version: 2.1.1
 Authors@R: c(person("Amos", "Tanay", role=c("aut")),
     person("Netta", "Mendelson Cohen", email="netta.mendelsoncohen@weizmann.ac.il",
     role=c("aut")),
@@ -30,11 +30,11 @@ URL: https://tanaylab.github.io/shaman/,
 OS_type: unix
 BugReports: https://github.com/tanaylab/shaman/issues
 NeedsCompilation: yes
-Packaged: 2026-10-06 11:10:47 UTC; aviezerl
+Packaged: 2026-10-18 05:39:16 UTC; aviezerl
 Author: Amos Tanay [aut],
   Netta Mendelson Cohen [aut],
   Aviezer Lifshitz [aut, cre],
   Weizmann Institute of Science [cph]
 Maintainer: Aviezer Lifshitz <aviezer.lifshitz@weizmann.ac.il>
 Repository: CRAN
-Date/Publication: 2026-10-16 09:50:02 UTC
+Date/Publication: 2026-10-18 11:00:02 UTC
